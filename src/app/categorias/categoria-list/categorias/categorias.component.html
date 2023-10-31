@@ -1,0 +1,17 @@
+<p class="text-center text-muted" > 
+  Carregado
+</p>
+
+<ol class="list-unstyled">
+  <li *ngFor="let cols of rows" class="row no-gutters p-0">
+      <div *ngFor="let categoria of cols" class="col-4" apDarkenOnHover>
+          <ap-card>
+              <ap-categoria 
+                  [id]="categoria.id" 
+                  [nome]="categoria.nome"
+                  [ativo]="categoria.ativo">
+              </ap-categoria>             
+          </ap-card>
+      </div>
+  </li>
+</ol>

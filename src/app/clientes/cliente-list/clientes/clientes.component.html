@@ -1,0 +1,24 @@
+<p class="text-center text-muted" > 
+  Carregado
+</p>
+
+<ol class="list-unstyled">
+  <li *ngFor="let cols of rows" class="row no-gutters p-0">
+      <div *ngFor="let cliente of cols" class="col-4" apDarkenOnHover>
+          <ap-card>
+              <ap-cliente 
+                  [id]="cliente.id" 
+                  [nome]="cliente.nome"
+                  [cpf]="cliente.cpf"
+                  [telefone]="cliente.telefone"
+                  [rua]="cliente.rua"
+                  [numero]="cliente.rumero"
+                  [complemento]="cliente.complemento"
+                  [bairro]="cliente.bairro"
+                  [cidade]="cliente.cidade"
+                  [estado]="cliente.estado">
+              </ap-cliente>             
+          </ap-card>
+      </div>
+  </li>
+</ol>
