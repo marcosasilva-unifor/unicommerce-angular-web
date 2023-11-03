@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CategoriaFormComponent } from './categoria-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 
 @NgModule({
     declarations: [
@@ -10,7 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     imports: [
         CommonModule,
-        HttpClientModule
+        HttpClientModule,
+        VMessageModule,
+        ReactiveFormsModule,
+        RouterModule 
     ],
     exports: [ CategoriaFormComponent ]
 })

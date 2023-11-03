@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriaService } from '../categoria/categoria.service';
+
 import { Categoria } from '../categoria/categoria';
+import { CategoriaService } from '../categoria/categoria.service';
 
 @Component({
   selector: 'ap-categoria-list',
@@ -30,6 +31,7 @@ export class CategoriaListComponent implements OnInit {
         this.categorias = this.categorias.concat(categorias);
       });
   }
+
  /*  load() {
     this.categoriaService
       .listFromCategoriaPaginated(this.userName, ++this.currentPage)

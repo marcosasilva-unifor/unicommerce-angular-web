@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Cliente } from '../cliente/cliente';
 import { ClienteService } from '../cliente/cliente.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ap-cliente-list',
@@ -18,7 +19,7 @@ export class ClienteListComponent implements OnInit {
   ) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.clientes = this.activatedRoute.snapshot.data['clientes'];
   }
 

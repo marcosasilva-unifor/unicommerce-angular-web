@@ -6,6 +6,11 @@ import { CategoriaListComponent } from './categorias/categoria-list/categoria-li
 import { CategoriaFormComponent } from './categorias/categoria-form/categoria-form.component';
 import { CategoriaListResolver } from './categorias/categoria-list/categoria-list.resolver';
 import { ClienteFormComponent } from './clientes/cliente-form/cliente-form.component';
+import { ClienteListComponent } from './clientes/cliente-list/cliente-list.component';
+import { ClienteListResolver } from './clientes/cliente-list/cliente-list.resolver';
+import { ProdutoListComponent } from './produtos/produto-list/produto-list.component';
+import { ProdutoListResolver } from './produtos/produto-list/produto-list.resolver';
+import { ProdutoFormComponent } from './produtos/produto-form/produto-form.component';
 
 const routes: Routes = [
     /* {
@@ -16,7 +21,7 @@ const routes: Routes = [
         path: 'categoria/lista', 
         component: CategoriaListComponent,
         resolve: {
-            photos: CategoriaListResolver
+            categorias: CategoriaListResolver
         } 
     },
     { 
@@ -27,7 +32,26 @@ const routes: Routes = [
         path: 'cliente', 
         component: ClienteFormComponent
     },
-        
+    { 
+        path: 'cliente/lista', 
+        component: ClienteListComponent,
+        resolve: {
+            clientes: ClienteListResolver
+        } 
+    },
+      
+    { 
+        path: 'produto/lista', 
+        component: ProdutoListComponent,
+        resolve: {
+            produtos: ProdutoListResolver
+        } 
+    },
+    { 
+        path: 'produto', 
+        component: ProdutoFormComponent
+    },
+    
     { 
         path: '**', 
         component: NotFoundComponent 

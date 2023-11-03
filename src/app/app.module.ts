@@ -8,6 +8,7 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { AppRoutingModule } from './app.routing.module';
 import { ErrorsModule } from './errors/errors.module';
+import { ProdutosModule } from './produtos/produtos.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ErrorsModule } from './errors/errors.module';
     BrowserModule,
     CategoriasModule,
     ClientesModule,
+    ProdutosModule,
     HttpClientModule,
     AppRoutingModule,
     ErrorsModule

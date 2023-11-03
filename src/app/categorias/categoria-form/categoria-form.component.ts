@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { CategoriaService } from '../categoria/categoria.service';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { Router } from '@angular/router';
+import { Categoria } from '../categoria/categoria';
 
 @Component({
   selector: 'ap-categoria-form',
@@ -7,9 +13,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaFormComponent implements OnInit {
 
-  constructor() { }
+  categoriaForm: FormGroup;
+  @ViewChild('#categoriaNomeInput') categoriaNomeInput: ElementRef<HTMLInputElement>;
+   categoria: Categoria;
 
-  ngOnInit() {
+  constructor(
+      private formBuilder: FormBuilder,
+      private categoriaService: CategoriaService,
+      private router: Router,
+      private platformDetectorService: PlatformDetectorService
+  ) {}
+
+  ngOnInit(): void {
+      this.categoriaForm = this.formBuilder.group({
+          nome: ['', Validators.required],
+          status: ['', Validators.required]
+      });
   }
 
+  addCategoria() {
+      this.categoria = this.categoriaForm.value;
+      
+      this.categoriaService
+          .adicionarCategoria(this.categoria)
+          .subscribe(
+              () => this.router.navigateByUrl('categoria/lista'),
+              //() => this.router.navigate(['user', userName]),
+              err => {
+                  console.log(err);
+                  this.categoriaForm.reset();
+                  this.platformDetectorService.isPlatformBrowser() &&
+                  this.categoriaNomeInput.nativeElement.focus();
+                  alert('Dados invalidos para categoria')
+              }
+        ); 
+
+  }
 }
