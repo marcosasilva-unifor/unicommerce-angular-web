@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 import { CategoriaService } from '../categoria/categoria.service';
-import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
-import { Router } from '@angular/router';
 import { Categoria } from '../categoria/categoria';
 
 @Component({
@@ -37,14 +37,14 @@ export class CategoriaFormComponent implements OnInit {
       this.categoriaService
           .adicionarCategoria(this.categoria)
           .subscribe(
-              () => this.router.navigateByUrl('categoria/lista'),
+              //() => this.router.navigateByUrl('categoria/lista'),
               //() => this.router.navigate(['user', userName]),
               err => {
                   console.log(err);
                   this.categoriaForm.reset();
                   this.platformDetectorService.isPlatformBrowser() &&
                   this.categoriaNomeInput.nativeElement.focus();
-                  alert('Dados invalidos para categoria')
+                  alert('Dados invalidos para a categoria')
               }
         ); 
 
