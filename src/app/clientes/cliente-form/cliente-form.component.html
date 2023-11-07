@@ -3,58 +3,102 @@
   <h1 class="text-center">Unicommerce</h1><br>
   <h1 class="text-center">Cliente</h1><br>
 
-  <form class="form">
+  <form [formGroup]="clienteForm" class="form" (submit)="addCliente()">
 
     <div class="form-group">
         <label for="nome">Nome:</label>
-        <input id="nome" type="text" class="form-control" required autofocus/>
-    </div>
+        <input 
+          #clienteNomeInput
+          formControlName="nome"
+          id="nome" type="text" class="form-control" required autofocus/>
+        <ap-vmessage
+          *ngIf="clienteForm.get('nome').errors?.required"
+          text="Nome do cliente requerido!">
+      </ap-vmessage>
+      </div>
 
     <div class="form-group">
       <label for="cpf">Cpf:</label>
-      <input id="cpf" type="text" 
-          class="form-control" 
-          name="cpf" 
-          pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
-          required autofocus/>
+      <input 
+        formControlName="cpf"
+        id="cpf" type="text" 
+        class="form-control" 
+        name="cpf" 
+        pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
+        required autofocus/>
     </div>
 
     <div class="form-group">
       <label for="telefone">Telefone:</label>
-      <input id="telefone" type="text" class="form-control" required autofocus/>
+      <input 
+        formControlName="telefone"
+        id="telefone" type="text" 
+        class="form-control" required autofocus/>
     </div>
 
     <div class="form-group">
       <label for="rua">Rua:</label>
-      <input id="rua" type="text" class="form-control" required autofocus/>
+      <input 
+        formControlName="rua"
+        id="rua" 
+        type="text" 
+        class="form-control" required autofocus/>
     </div>
 
     <div class="form-group">
       <label for="numero">Número:</label>
-      <input id="numero" type="text" class="form-control" required autofocus/>
+      <input 
+        formControlName="numero"
+        id="numero" type="text" 
+        class="form-control" required autofocus/>
     </div>
 
     <div class="form-group">
       <label for="complemento">Complemento:</label>
-      <input id="complemento" type="text" class="form-control" autofocus/>
+      <input 
+        formControlName="complemento"
+        id="complemento" type="text" 
+        class="form-control" autofocus/>
     </div>
 
     <div class="form-group">
       <label for="bairro">Bairro:</label>
-      <input id="bairro" type="text" class="form-control" required autofocus/>
+      <input 
+        formControlName="bairro"
+        id="bairro" type="text" 
+        class="form-control" required autofocus/>
     </div>
 
     <div class="form-group">
       <label for="cidade">Cidade:</label>
-      <input id="cidade" type="text" class="form-control" required autofocus/>
+      <input 
+        formControlName="cidade"
+        id="cidade" type="text" 
+        class="form-control" required autofocus/>
     </div>
 
     <div class="form-group">
       <label for="estado">Estado:</label>
-      <input id="estado" type="text" class="form-control" required autofocus/>
+      <input 
+        formControlName="estado"
+        id="estado" type="text" 
+        class="form-control" required autofocus/>
     </div>
 
-    <button class="btn btn-primary" type="submit">Cadastrar</button>
+    <div class="form-group">
+      <label for="usuarioId">Usuário:</label>
+      <input 
+        formControlName="usuarioId"
+        type="text" 
+        id="usuarioId" 
+        class="form-control" required autofocus/>
+  </div>
+
+    <button 
+      [disabled]="!clienteForm.valid"
+      class="btn btn-primary" 
+      type="submit">Cadastrar
+    </button>
   </form>
   <br>
 

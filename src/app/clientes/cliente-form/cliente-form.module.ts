@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ClienteFormComponent } from './cliente-form.component';
+import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -10,7 +12,9 @@ import { ClienteFormComponent } from './cliente-form.component';
     ],
     imports: [
         CommonModule,
-        HttpClientModule
+        HttpClientModule,
+        VMessageModule,
+        ReactiveFormsModule,
     ],
     exports: [ ClienteFormComponent ]
 })

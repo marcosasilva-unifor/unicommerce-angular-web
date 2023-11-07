@@ -15,7 +15,7 @@ import { ProdutoService } from '../produto/produto.service';
 export class ProdutoFormComponent implements OnInit {
 
   produtoForm: FormGroup;
-  @ViewChild('#produtoNomeInput') produtoNomeInput: ElementRef<HTMLInputElement>;
+  @ViewChild('produtoNomeInput') produtoNomeInput: ElementRef<HTMLInputElement>;
   produto: Produto;
 
   constructor(

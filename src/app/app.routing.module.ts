@@ -13,16 +13,21 @@ import { ProdutoListResolver } from './produtos/produto-list/produto-list.resolv
 import { ProdutoFormComponent } from './produtos/produto-form/produto-form.component';
 
 const routes: Routes = [
-    /* {
+    {
         path: '',
-        component: SignInComponent
-    }, */
+        pathMatch: 'full',
+        redirectTo: 'home'
+    },
+    {
+        path: 'home',
+        loadChildren: './home/home.module#HomeModule'
+    },
     { 
         path: 'categoria/lista', 
         component: CategoriaListComponent,
         resolve: {
             categorias: CategoriaListResolver
-        } 
+        }
     },
     { 
         path: 'categoria', 
@@ -60,8 +65,16 @@ const routes: Routes = [
 
 @NgModule({
     imports: [ 
-        RouterModule.forRoot(routes) 
+        RouterModule.forRoot(routes, { useHash: true} ) 
     ],
     exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
+
+//Angular se encontra na versão 15.x.x
+/* const routes: Routes = [
+    {
+      path: 'home',
+      loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    }
+  ]; */

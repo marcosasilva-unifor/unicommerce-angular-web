@@ -14,7 +14,7 @@ import { Categoria } from '../categoria/categoria';
 export class CategoriaFormComponent implements OnInit {
 
   categoriaForm: FormGroup;
-  @ViewChild('#categoriaNomeInput') categoriaNomeInput: ElementRef<HTMLInputElement>;
+  @ViewChild('categoriaNomeInput') categoriaNomeInput: ElementRef<HTMLInputElement>;
    categoria: Categoria;
 
   constructor(

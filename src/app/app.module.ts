@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AppRoutingModule } from './app.routing.module';
 
 import { CategoriasModule } from './categorias/categorias.module';
 import { ClientesModule } from './clientes/clientes.module';
-import { AppRoutingModule } from './app.routing.module';
 import { ErrorsModule } from './errors/errors.module';
 import { ProdutosModule } from './produtos/produtos.module';
+import { HomeModule } from './home/home.module';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -21,9 +22,9 @@ import { ProdutosModule } from './produtos/produtos.module';
     ClientesModule,
     ProdutosModule,
     HttpClientModule,
-    AppRoutingModule,
-    ErrorsModule
-    
+    ErrorsModule,
+    CoreModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

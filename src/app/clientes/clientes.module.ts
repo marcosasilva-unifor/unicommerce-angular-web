@@ -5,6 +5,7 @@ import { ClienteModule } from './cliente/cliente.module';
 import { ClienteFormModule } from './cliente-form/cliente-form.module';
 import { ClienteListModule } from './cliente-list/cliente-list.module';
 
+
 @NgModule({
     imports: [ 
         ClienteModule,

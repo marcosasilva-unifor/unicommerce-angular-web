@@ -31,15 +31,4 @@ export class CategoriaListComponent implements OnInit {
         this.categorias = this.categorias.concat(categorias);
       });
   }
-
- /*  load() {
-    this.categoriaService
-      .listFromCategoriaPaginated(this.userName, ++this.currentPage)
-      .subscribe(photos => {
-        this.filter = '';
-        this.categoiras = this.categoiras.concat(categoiras);
-          if(!this.categoiras.length) this.hasMore = false;
-      });
-  } */
-
 }
