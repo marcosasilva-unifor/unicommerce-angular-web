@@ -18,6 +18,7 @@ export class AuthService {
     ) { }
 
   authenticate(login: string, senha: string) {
+    console.log(login + ' -- ' + senha);
 
     return this.http
       .post('/api/login', 

@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cliente } from './cliente';
 import { Observable } from 'rxjs';
+
+import { Cliente } from './cliente';
 
 const API = 'http://localhost:8080/api';
 
@@ -21,7 +22,6 @@ export class ClienteService{
     }
 
     adicionarCliente(cliente: Cliente): Observable<any> {
-        console.log(cliente);
         return this.http
         .post<any>(API + '/cliente', cliente);
     }

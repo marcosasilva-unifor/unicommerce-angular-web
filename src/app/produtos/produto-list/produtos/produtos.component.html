@@ -2,21 +2,34 @@
   Carregado
 </p>
 
-<ol class="list-unstyled">
-  <li *ngFor="let cols of rows" class="row no-gutters p-0">
-      <div *ngFor="let produto of cols" class="col-4" apDarkenOnHover>
-          <ap-card>
-              <ap-produto 
-                  [id]="produto.id" 
-                  [nome]="produto.nome"
-                  [preco]="produto.preco"
-                  [descricao]="produto.descricao"
-                  [qntEmEstoque]="produto.qntEmEstoque"
-                  [categoriaId]="produto.categoria.id"
-                  [categoriaAtivo]="produto.categoria.ativo"
-                  [categoriaNome]="produto.categoria.nome">
-              </ap-produto>             
-          </ap-card>
-      </div>
-  </li>
-</ol>
+<div class="container">
+  <h3>Lista de produtos <span class="badge badge-secondary">3 novos</span></h3>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Quanidade em Estoque</th>
+        <th scope="col">ID da Categoria</th>
+        <th scope="col">Status da Categoria</th>
+        <th scope="col">Nome da Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let produto of produtos" apDarkenOnHover>
+            <th scope="row">{{produto.id}}</th>
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td>{{produto.descricao}}</td>
+            <td>{{produto.qntEmEstoque}}</td>
+            <td>{{produto.categoria.id}}</td>
+            <td>{{produto.categoria.ativo}}</td>
+            <td>{{produto.categoria.nome}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+

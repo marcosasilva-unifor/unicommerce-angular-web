@@ -11,6 +11,10 @@ import { ClienteListResolver } from './clientes/cliente-list/cliente-list.resolv
 import { ProdutoListComponent } from './produtos/produto-list/produto-list.component';
 import { ProdutoListResolver } from './produtos/produto-list/produto-list.resolver';
 import { ProdutoFormComponent } from './produtos/produto-form/produto-form.component';
+import { UsuarioListComponent } from './usuarios/usuario-list/usuario-list.component';
+import { UsuarioListResolver } from './usuarios/usuario-list/usuario-list.resolver';
+
+import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
     {
@@ -25,38 +29,56 @@ const routes: Routes = [
     { 
         path: 'categoria/lista', 
         component: CategoriaListComponent,
+        canActivate: [AuthGuard],
         resolve: {
             categorias: CategoriaListResolver
         }
     },
     { 
         path: 'categoria', 
-        component: CategoriaFormComponent
+        component: CategoriaFormComponent,
+        canActivate: [AuthGuard] 
     },
     { 
         path: 'cliente', 
-        component: ClienteFormComponent
+        component: ClienteFormComponent,
+        canActivate: [AuthGuard] 
     },
     { 
         path: 'cliente/lista', 
         component: ClienteListComponent,
         resolve: {
             clientes: ClienteListResolver
-        } 
-    },
-      
+        },
+        canActivate: [AuthGuard]  
+    },   
     { 
         path: 'produto/lista', 
         component: ProdutoListComponent,
+        canActivate: [AuthGuard],  
         resolve: {
             produtos: ProdutoListResolver
-        } 
+        }
     },
     { 
         path: 'produto', 
-        component: ProdutoFormComponent
+        component: ProdutoFormComponent,
+        canActivate: [AuthGuard] 
+    }, 
+    { 
+        path: 'usuario/lista', 
+        component: UsuarioListComponent,
+        canActivate: [AuthGuard],  
+        resolve: {
+            usuarios: UsuarioListResolver
+        }
     },
-    
+    /* { 
+        path: 'usuario', 
+        component: UsuarioFormComponent,
+        canActivate: [AuthGuard] 
+    }, */
+
     { 
         path: '**', 
         component: NotFoundComponent 

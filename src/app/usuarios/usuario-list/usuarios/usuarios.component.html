@@ -1,0 +1,23 @@
+<p class="text-center text-muted" > 
+  Carregado
+</p>
+
+<div class="container">
+  <h3>Lista de usuarios <span class="badge badge-secondary">3 novos</span></h3>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Login</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of usuarios" apDarkenOnHover>
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.login}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+

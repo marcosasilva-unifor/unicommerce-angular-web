@@ -8,8 +8,8 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { ErrorsModule } from './errors/errors.module';
 import { ProdutosModule } from './produtos/produtos.module';
-import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 
 @NgModule({
@@ -21,6 +21,7 @@ import { CoreModule } from './core/core.module';
     CategoriasModule,
     ClientesModule,
     ProdutosModule,
+    UsuariosModule,
     HttpClientModule,
     ErrorsModule,
     CoreModule,
