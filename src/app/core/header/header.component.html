@@ -1,33 +1,56 @@
 <header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['']">Unicommerce</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-        data-target="#navbarNavAltMarkup" 
-        aria-controls="navbarNavAltMarkup" 
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" [routerLink]="['/categoria/lista']">Categorias</a>
-            <a class="nav-item nav-link" [routerLink]="['/cliente/lista']">Clientes</a>
-            <a class="nav-item nav-link" [routerLink]="['/produto/lista']">Produtos</a>
-            <a class="nav-item nav-link" [routerLink]="['/usuario/lista']">Usuários</a>
-            <a class="nav-item nav-link" [routerLink]="['/categoria']">Cadastro de Categoria</a>
-            <a class="nav-item nav-link" [routerLink]="['/cliente']">Cadastro de Cliente</a>
-            <a class="nav-item nav-link" [routerLink]="['/produto']">Cadastro de Produto</a>
-        </div>
-        <div class="text-light" *ngIf="(user$ | async) as user; else login">
-            <i class="fa fa-user-circle mr-1"></i>
-            <a class="mr-1">{{ user.sub }}</a>
-            <a (click)="logout()">(Logout)</a>
-        </div>
+        <a class="navbar-brand" [routerLink]="['']">
+            <i tabindex="0" (keyup.space)="menu.toggle()" (click)="menu.toggle()" class="fa fa-bars mr-2"></i> 
+            Unicommerce
+        </a>
+    
+       <!-- <ap-menu #menu> --> 
+          <!--   <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" [routerLink]="['/categoria/lista']">Categorias</a>
+                <a class="nav-item nav-link" [routerLink]="['/cliente/lista']">Clientes</a>
+                <a class="nav-item nav-link" [routerLink]="['/produto/lista']">Produtos</a>
+                <a class="nav-item nav-link" [routerLink]="['/usuario/lista']">Usuários</a>
+                <a class="nav-item nav-link" [routerLink]="['/categoria']">Cadastro de Categoria</a>
+                <a class="nav-item nav-link" [routerLink]="['/cliente']">Cadastro de Cliente</a>
+                <a class="nav-item nav-link" [routerLink]="['/produto']">Cadastro de Produto</a>
+            </div> -->
+        <!-- </ap-menu> -->
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarNavAltMarkup" 
+            aria-controls="navbarNavAltMarkup" 
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <ng-template #login>
-            <span class="navbar-text">
-               <a [routerLink]="['']">Por favor, login!</a>
-            </span>
-        </ng-template>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" [routerLink]="['/categoria/lista']">Categorias</a>
+                <a class="nav-item nav-link" [routerLink]="['/cliente/lista']">Clientes</a>
+                <a class="nav-item nav-link" [routerLink]="['/produto/lista']">Produtos</a>
+                <a class="nav-item nav-link" [routerLink]="['/usuario/lista']">Usuários</a>
+                <a class="nav-item nav-link" [routerLink]="['/categoria']">Cadastro de Categoria</a>
+                <a class="nav-item nav-link" [routerLink]="['/cliente']">Cadastro de Cliente</a>
+                <a class="nav-item nav-link" [routerLink]="['/produto']">Cadastro de Produto</a>
+            </div> 
+
+            <div class="text-light" *ngIf="(user$ | async) as user; else login">
+                <i class="fa fa-user-circle mr-1"></i>
+                <a class="mr-1">{{ user.sub }}</a>
+                <a (click)="logout()">(Logout)</a>
+            </div>
+
+            <ng-template #login>
+                <span class="navbar-text">
+                <a [routerLink]="['']">Por favor, login!</a>
+                </span>
+            </ng-template>
+        </div> 
+
     </nav>
+    <div class="fixed-top">
+        <ap-loading></ap-loading>
+        <ap-alert></ap-alert>
+    </div>
 </header>

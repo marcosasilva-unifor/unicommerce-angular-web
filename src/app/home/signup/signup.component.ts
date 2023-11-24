@@ -7,6 +7,7 @@ import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validat
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 import { SignUpService } from './signup.service';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { userNamePassword } from './username-password.validator';
 
 @Component({
     templateUrl: './signup.component.html',
@@ -45,19 +46,24 @@ export class SignUpComponent implements OnInit {
                 ]
         
             ]
-        });
+        },
+        {
+            validator: userNamePassword
+        }
+        );
         this.platformDetectorService.isPlatformBrowser() &&
         this.inputLogin.nativeElement.focus();
     }
 
     signup() {
-        const newUser = this.signupForm.getRawValue() as NewUser;
-        this.signUpService
-        .signup(newUser)
-        .subscribe(
-            () => this.router.navigate(['']),
-            err => console.log(err)
-        );
-
+        if(this.signupForm.invalid && !this.signupForm.pending) {
+            const newUser = this.signupForm.getRawValue() as NewUser;
+            this.signUpService
+            .signup(newUser)
+            .subscribe(
+                () => this.router.navigate(['']),
+                err => console.log(err)
+            );
+        }
     }
 }

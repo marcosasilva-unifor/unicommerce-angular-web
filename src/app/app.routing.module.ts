@@ -15,6 +15,7 @@ import { UsuarioListComponent } from './usuarios/usuario-list/usuario-list.compo
 import { UsuarioListResolver } from './usuarios/usuario-list/usuario-list.resolver';
 
 import { AuthGuard } from './core/auth/auth.guard';
+import { GlobalErrorComponent } from './errors/global-error/global-error.component';
 
 const routes: Routes = [
     {
@@ -32,17 +33,26 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         resolve: {
             categorias: CategoriaListResolver
-        }
+        },
+        data: { 
+            title: 'Lista categorias'
+        }            
     },
     { 
         path: 'categoria', 
         component: CategoriaFormComponent,
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard],
+        data: { 
+            title: 'Cadastra categoria'
+        } 
     },
     { 
         path: 'cliente', 
         component: ClienteFormComponent,
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard],
+        data: { 
+            title: 'Cadastra Cliente'
+        } 
     },
     { 
         path: 'cliente/lista', 
@@ -50,7 +60,10 @@ const routes: Routes = [
         resolve: {
             clientes: ClienteListResolver
         },
-        canActivate: [AuthGuard]  
+        canActivate: [AuthGuard],
+        data: { 
+            title: 'Lista clientes'
+        }  
     },   
     { 
         path: 'produto/lista', 
@@ -58,12 +71,18 @@ const routes: Routes = [
         canActivate: [AuthGuard],  
         resolve: {
             produtos: ProdutoListResolver
+        },
+        data: { 
+            title: 'Lista produtos'
         }
     },
     { 
         path: 'produto', 
         component: ProdutoFormComponent,
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard],
+        data: { 
+            title: 'Cadastra produto'
+        } 
     }, 
     { 
         path: 'usuario/lista', 
@@ -71,6 +90,9 @@ const routes: Routes = [
         canActivate: [AuthGuard],  
         resolve: {
             usuarios: UsuarioListResolver
+        },
+        data: { 
+            title: 'Lista usuários'
         }
     },
     /* { 
@@ -78,10 +100,24 @@ const routes: Routes = [
         component: UsuarioFormComponent,
         canActivate: [AuthGuard] 
     }, */
+    {
+        path: 'error',
+        component: GlobalErrorComponent,
+        data: { 
+            title: 'Error'
+        }
+    },
 
     { 
+        path: 'not-found',
+        component: NotFoundComponent,
+        data: { 
+            title: 'Página não encontrada'
+        }
+    },
+    { 
         path: '**', 
-        component: NotFoundComponent 
+        redirectTo: 'not-found'
     }
 ];
 

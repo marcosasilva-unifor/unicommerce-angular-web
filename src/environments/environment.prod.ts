@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
   API: '/',
-  BASE_URL: ''
+  BASE_URL: '',
+  serverLog: 'http://suaapi'
 };

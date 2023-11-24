@@ -15,7 +15,7 @@ export class UsuarioService {
 
   get(id: string) {
     return this.http
-      .get<Usuario>(API + 'usuario/' + id);
+      .get<Usuario>(API + '/usuario/' + id);
   }
 
   getList() {
@@ -28,12 +28,12 @@ export class UsuarioService {
     .post<any>(API + '/usuario', usuario);
   } 
 
-  listFromUsuarioPaginated(userName: string, page: number) {
+  /* listFromUsuarioPaginated(userName: string, page: number) {
     const params = new HttpParams()
         .append('page', page.toString());
 
     return this.http
         .get<Usuario[]>(API + '/usuario/lista', { params });
-  }
+  } */
 
 }

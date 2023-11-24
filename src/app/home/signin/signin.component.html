@@ -1,6 +1,6 @@
 <h4 class="text-center">Login</h4>
 
-<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
+<form #form="ngForm" [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
     <div class="form-group">
         <input #usuarioLoginInput
@@ -9,7 +9,7 @@
             class="form-control" 
             placeholder="Usuário login" autofocus>
         <ap-vmessage
-            *ngIf="loginForm.get('login').errors?.required"
+            *ngIf="loginForm.get('login').errors?.required && form.submitted"
             text="Login do usuário é requerido!">
         </ap-vmessage> 
     </div>
@@ -21,12 +21,12 @@
             type="password"  class="form-control"  
             placeholder="senha"> 
         <ap-vmessage
-            *ngIf="loginForm.get('senha').errors?.required"
+            *ngIf="loginForm.get('senha').errors?.required && form.submitted"
             text="Senha é requerida!">
         </ap-vmessage>           
     </div>
 
-    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">
+    <button type="submit" class="btn btn-primary btn-block">
         login
     </button>
 </form>

@@ -10,7 +10,7 @@ export class SignUpService {
     constructor(private http: HttpClient) {}
 
     checkUserLoginTaken(login: string) {
-
+        
         return this.http.get('/api/login/' + login);
     }
 

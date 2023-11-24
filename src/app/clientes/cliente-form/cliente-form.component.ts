@@ -57,15 +57,14 @@ export class ClienteFormComponent implements OnInit {
 
     this.clienteService
           .adicionarCliente(cliente)
-          .subscribe(
+          .subscribe(() => {}, 
             err => {
             console.log(err);
             this.clienteForm.reset();
             this.platformDetectorService.isPlatformBrowser() &&
             this.clienteNomeInput.nativeElement.focus();
             alert('Dados invalidos para o cliente')
-        }
-        ); 
+      }); 
 
   }
 }

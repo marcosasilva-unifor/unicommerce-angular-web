@@ -5,6 +5,7 @@ import { PlatformDetectorService } from 'src/app/core/platform-detector/platform
 
 import { CategoriaService } from '../categoria/categoria.service';
 import { Categoria } from '../categoria/categoria';
+import { AlertService } from 'src/app/shared/components/alert/alert.service';
 
 @Component({
   selector: 'ap-categoria-form',
@@ -21,7 +22,8 @@ export class CategoriaFormComponent implements OnInit {
       private formBuilder: FormBuilder,
       private categoriaService: CategoriaService,
       private router: Router,
-      private platformDetectorService: PlatformDetectorService
+      private platformDetectorService: PlatformDetectorService,
+      private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -37,16 +39,16 @@ export class CategoriaFormComponent implements OnInit {
       this.categoriaService
           .adicionarCategoria(this.categoria)
           .subscribe(
-              //() => this.router.navigateByUrl('categoria/lista'),
-              //() => this.router.navigate(['user', userName]),
-              err => {
+                () => {
+                this.alertService.success('Categoria cadastra com sucesso!'),
+                err => {
                   console.log(err);
                   this.categoriaForm.reset();
                   this.platformDetectorService.isPlatformBrowser() &&
                   this.categoriaNomeInput.nativeElement.focus();
                   alert('Dados invalidos para a categoria')
-              }
-        ); 
+                }
+            }); 
 
   }
 }

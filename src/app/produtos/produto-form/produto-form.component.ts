@@ -40,15 +40,13 @@ export class ProdutoFormComponent implements OnInit {
     
       this.produtoService
           .adicionarProduto(this.produto)
-          .subscribe(
+          .subscribe(() => {}, 
             err => {
             console.log(err);
             this.produtoForm.reset();
             this.platformDetectorService.isPlatformBrowser() &&
             this.produtoNomeInput.nativeElement.focus();
             alert('Dados invalidos para o produto')
-        }
-        ); 
-
+        }); 
   }
 }
